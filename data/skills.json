@@ -1,0 +1,68 @@
+[
+    {
+        "gambar": "img/html.png",
+        "isi": "html",
+        "perify": "done"
+    },
+    {
+        "gambar": "img/css.svg",
+        "isi": "css",
+        "perify": "done"
+    },
+    {
+        "gambar": "img/javascript.png",
+        "isi": "javascript",
+        "perify": "done"
+    },
+    {
+        "gambar": "img/nodejs.png",
+        "isi": "nodejs",
+        "perify": "done"
+    },
+    {
+        "gambar": "img/bootstrap.png",
+        "isi": "bootstrap",
+        "perify": "done"
+    }
+    ,
+    {
+        "gambar": "img/expressjs.png",
+        "isi": "expressjs",
+        "perify": "done"
+    },
+    {
+        "gambar": "img/mongodb.svg  ",
+        "isi": "mongoDB",
+        "perify": "done"
+    },
+    {
+        "gambar": "img/arduino.svg",
+        "isi": "arduino",
+        "perify": "done"
+    },
+    {
+        "gambar": "img/c++.png",
+        "isi": "c++",
+        "perify": "nope"
+    },
+    {
+        "gambar": "img/python.png",
+        "isi": "python",
+        "perify": "nope"
+    },
+    {
+        "gambar": "img/php.png",
+        "isi": "php",
+        "perify": "nope"
+    },
+    {
+        "gambar": "img/tailwind.png",
+        "isi": "tailwind",
+        "perify": "nope"
+    },
+    {
+        "gambar": "img/threejs.png",
+        "isi": "threejs",
+        "perify": "nope"
+    }
+]
