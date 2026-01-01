@@ -1,6 +1,7 @@
-import * as THREE from '../portofolio/node_modules/three/build/three.module.js';
-import { OrbitControls } from '../portofolio/node_modules/three/examples/jsm/controls/OrbitControls.js';
-import { GLTFLoader } from '../node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/GLTFLoader.js';
+
+
 
 const container = document.getElementById('three-container');
 
