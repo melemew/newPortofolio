@@ -64,5 +64,10 @@
         "gambar": "img/threejs.png",
         "isi": "threejs",
         "perify": "nope"
+    },
+    {
+        "gambar": "img/java.png",
+        "isi": "java",
+        "perify": "nope"
     }
 ]

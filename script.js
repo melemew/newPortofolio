@@ -7,13 +7,16 @@ const div_h1 = document.querySelector('.hero .about1 div');
 const p = document.querySelectorAll('p');
 
 
-const h1_2 = 'as Software Enggineer'
+const h1_2 = 'as Software Engineer';
 let newH1 = '';
 let newH1_2 = '';
 let i = 0;
 let loop = 0;
 let limit;
 hero_h1();
+
+console.log(h1); // M. Syihabuddin Yazid
+
 
 // fungsi untuk h1 : myName
 function hero_h1() {
@@ -93,7 +96,7 @@ function h1_se() {
     h1_element.innerHTML = newH1_2;
     const interval = setInterval(() => {
 
-        if (i == 21) {
+        if (i == 20) {
 
             loop = 0;
             // i = 0;
