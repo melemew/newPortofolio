@@ -1,0 +1,22 @@
+/* bagian services */
+.webdiv.reveal {
+    opacity: 0;
+    transform: translateY(-500px);
+    transition: 1s ease;
+}
+
+.appdiv.reveal {
+    opacity: 0;
+    transform: translateY(-150px);
+    transition: 1s ease;
+}
+
+.appdiv.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.webdiv.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}

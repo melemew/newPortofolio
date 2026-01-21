@@ -5,30 +5,30 @@ import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
 const container = document.getElementById('three-container');
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(
+const cam = new THREE.PerspectiveCamera(
     45,
     container.clientWidth / container.clientHeight,
     0.1,
     1000
 );
-camera.position.set(0, 10, 25);
+cam.position.set(0, 0, 25);
 const renderer = new THREE.WebGLRenderer({ antialias:true, alpha:true });
 renderer.setSize(container.clientWidth, container.clientHeight);
 container.appendChild(renderer.domElement);
 
 
 
-/* controls */
+// ! controls
 // const controls = new OrbitControls(camera, renderer.domElement);
 // controls.enableZoom = false;
 // controls.enablePan = false;
 
 
-/* ligth */
-scene.add(new THREE.AmbientLight(0xffffff, 1.2));
+// ! light
+scene.add(new THREE.AmbientLight(0xffffff, 2));
 
 
-/* ! starfield */
+// ! starfield
 const starGeo = new THREE.BufferGeometry();
 const starCount = 1000;
 const positions = [];
@@ -56,76 +56,177 @@ scene.add(new THREE.Points(starGeo, starMat));
 
 
 
-// import model
+// * import model
 
 
 
 
 
-/* ! sun */
+// ! sun & planets
+const objectP = [];
 const sun = new THREE.Mesh(
     new THREE.SphereGeometry(2.5, 32, 32),
     new THREE.MeshStandardMaterial({ emissive: 0xffaa00 })
 );
+sun.name = 'matahari'
 scene.add(sun);
+objectP.push(sun);
 
 
 
-
-/* ! planets */
 const experiences = [
-    { title:"HTML & CSS", desc:"Frontend layout & styling", color:0x00aaff, r:8 },
-    { title:"JavaScript", desc:"Logic, DOM, async", color:0xff00ff, r:11 },
-    { title:"Three.js", desc:"3D web graphics", color:0x00ff99, r:14 }
+    { title:"HTML & CSS", desc:"Frontend layout & styling", color:0xf13557, r:8 },
+    { title:"JavaScript", desc:"Logic, DOM, async", color:0xffff00, r:11 },
+    { title:"Three.js", desc:"3D web graphics", color:0x00ff00, r:14 }
 ];
 
-const planets = [];
 
+const planets = [];
 experiences.forEach(e => {
     const p = new THREE.Mesh(
         new THREE.SphereGeometry(1,32,32),
-        new THREE.MeshStandardMaterial({ color:e.color })
+        new THREE.MeshStandardMaterial({ color: e.color })
     );
     p.userData = e;
     scene.add(p);
     planets.push(p);
+    objectP.push(p);
 });
+// console.log(planets);
+console.log(scene);
 
 
 
 
 
-/* ! interaksi */
+
+
+// ! interaksi
 const raycaster = new THREE.Raycaster();
-const mouse = new THREE.Vector2();
+const mouse = {}
+let selected;
 
 window.addEventListener('mousedown', e => {
-    mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
-
-    // console.log(mouse.x);
-    // console.log(mouse.y);
+    const rect = container.getBoundingClientRect();
+    // console.log(rect);
     
-    raycaster.setFromCamera(mouse, camera);
-    const hit = raycaster.intersectObjects(planets);
-    console.log(hit.length);
 
-    if (hit.length) {
-        document.getElementById("exp-title").textContent =
-        hit[0].object.userData.title;
-        document.getElementById("exp-desc").textContent =
-        hit[0].object.userData.desc;
-    }
+    mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+    mouse.y = ((e.clientY - rect.top) / rect.height) * -2 + 1;
+    
+    raycaster.setFromCamera(mouse, cam);
+    const hits = raycaster.intersectObjects(objectP);
+    
+    console.log(hits);
+
+    hits.forEach(i => {
+
+        if (Object.keys(i.object.userData).length != 0 && i.object.name === '') {
+            console.log(i.object.userData);
+            console.log('hello');
+            
+
+            document.getElementById("exp-title").textContent =
+            i.object.userData.title;
+            document.getElementById("exp-desc").textContent =
+            i.object.userData.desc;
+        } else if (i.object.name !== ''  && Object.keys(i.object.userData).length === 0) {
+            document.getElementById("exp-title").textContent = `Clue Warna Planets :`
+            document.getElementById("exp-desc").innerHTML = 
+            `<ul>
+                <li>Merah : HTML & CSS</li>
+                <li>Kuning : JAVASCRIPT</li>
+                <li>Hijau : THREEJS</li>
+            </ul>`
+        }
+
+    })
+    
 });
 
 
 
 
 
-/* render dan animasi */
+
+// ! controls manual by up, down, left, right
+window.addEventListener('keydown', e => {
+    if (
+        (e.key === 'ArrowUp' || e.key === 'ArrowDown') &&
+        !['INPUT','TEXTAREA'].includes(document.activeElement.tagName)
+    ) {
+        e.preventDefault();
+    }
+}, { passive:false });
+
+let radius = 30;          // jarak kamera dari model
+let polar = Math.PI / 2;  // rotasi vertikal (atas–bawah)
+let azimuth = 1.6;          // rotasi horizontal (kiri–kanan)
+
+const ROT_SPEED = 0.02;   // kecepatan rotasi
+const keys = {};
+
+document.addEventListener('keydown', (e) => {
+    keys[e.keyCode] = true;
+    
+});
+
+document.addEventListener('keyup', (e) => {
+    keys[e.keyCode] = false;
+});
+
+
+
+
+
+
+// ! render & animation
 let angle = 0;
 function animate() {
-    angle += 0.01;
+
+    // ! rotating cam to a model
+    // kiri
+    if (keys[37]) {
+        azimuth += ROT_SPEED;
+    }
+    
+    // kanan
+    if (keys[39]) {
+        azimuth -= ROT_SPEED;
+    }
+
+    // atas
+    if (keys[38]) {
+        polar -= ROT_SPEED;
+        polar = Math.max(0.1, Math.min(Math.PI - 0.1, polar));
+    }
+
+    // bawah
+    if (keys[40]) {
+        polar += ROT_SPEED;
+        polar = Math.max(0.1, Math.min(Math.PI - 0.1, polar));
+    } 
+
+    // deketin atau mundurin cam
+    if (keys[189]) {
+        radius += 0.2;  
+    }
+    if (keys[187]) {
+        radius -= 0.2;
+    }
+
+    // update posisi cam
+    cam.position.x = radius * Math.sin(polar) * Math.cos(azimuth);
+    cam.position.y = radius * Math.cos(polar);
+    cam.position.z = radius * Math.sin(polar) * Math.sin(azimuth);
+
+
+    cam.lookAt(0, 0, 0);
+
+
+
+    // ! rotate planets
+    angle += 0.004;
 
     planets.forEach((p,i) => {
         const r = experiences[i].r;
@@ -133,16 +234,17 @@ function animate() {
         p.position.z = Math.sin(angle+i) * r;
     });
 
-    renderer.render(scene, camera);
+    renderer.render(scene, cam);
     requestAnimationFrame(animate);
 }
 animate();
 
 
 
-/* responsive */
+
+// ! responsive
 window.addEventListener('resize', () => {
     renderer.setSize(container.clientWidth, container.clientHeight);
-    camera.aspect = container.clientWidth / container.clientHeight;
-    camera.updateProjectionMatrix();
+    cam.aspect = container.clientWidth / container.clientHeight;
+    cam.updateProjectionMatrix();
 });

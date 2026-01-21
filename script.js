@@ -15,7 +15,7 @@ let loop = 0;
 let limit;
 hero_h1();
 
-console.log(h1); // M. Syihabuddin Yazid
+// console.log(h1); // M. Syihabuddin Yazid
 
 
 // fungsi untuk h1 : myName
@@ -198,3 +198,39 @@ p.forEach(e => e.classList.add('no-select'));
         // jika mau izinkan seleksi di area tertentu, cek e.target
         e.preventDefault();
     });
+
+
+
+
+
+
+
+
+
+
+// clear form before unload
+window.onbeforeunload = () => {
+    for (const form of document.getElementsByTagName("form")) {
+        form.reset();
+    }
+}
+    
+window.addEventListener('scroll', reveal);
+    
+function reveal(){  
+    var reveals = document.querySelectorAll('.reveal');
+    
+    for(var i = 0; i < reveals.length; i++){
+    
+        var windowheight = window.innerHeight;
+        var revealtop = reveals[i].getBoundingClientRect().top;
+        var revealpoint = 180;
+    
+        if(revealtop < windowheight - revealpoint){
+            reveals[i].classList.add('active');
+        }
+        else{
+            reveals[i].classList.remove('active');
+        }
+    }
+}

@@ -8,6 +8,12 @@
 
     <link rel="shortcut icon" href="img/melemew.png" type="img/png">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animation.css">
+    <style>
+        .pengalaman ul {
+            list-style: none;
+        }
+    </style>
 </head>
 <body class="no-select-all">
     
@@ -19,8 +25,8 @@
                 <li><a href="#hero">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#pengalaman">Pengalaman</a></li>
-                <li><a href="">Projects</a></li>
-                <li><a href="">Contact</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#kontak">Contact</a></li>
             </ul>
         </nav>
 
@@ -34,7 +40,7 @@
         </div>
 
         <div class="about2">
-            <img class="satu_hero" src="img/saya.jpg" alt="">
+            <img class="satu_hero" src="img/me.jpeg" alt="">
             <img class="dua_hero" src="img/border_img.png" alt="">
         </div>
         
@@ -68,20 +74,101 @@
                 <!-- by javascript (threejs) -->
             </div>
                 <div class="exp-info">
-                <h3 id="exp-title">Click a planet!</h3>
-                <p id="exp-desc">Experience detail will appear here.</p>
+                <h3 id="exp-title">Click a planet & rotate it with your keyboard!</h3>
+                <p id="exp-desc">Experience detail will appear here. 
+                    <br><br>
+                    <ul>
+                        <li>Merah : HTML & CSS</li>
+                        <li>Kuning : JAVASCRIPT</li>
+                        <li>Hijau : THREEJS</li>
+                    </ul>
+                </p>
+                
             </div>
         </div>
     </section>
 
-    <section class="project">
-        <div>
-            <!-- by javascript -->
+    <section class="services" id="projects">
+
+            <h2>Projects</h2>
+
+            <div class="servicecontent">
+
+                <div class="servicetype webdiv reveal">
+                    <img src="img/mantap.jpeg" alt="">
+                    <div>
+                        <h3>Web Development</h3>
+                        <p>Web development adalah proses <span>membangun</span> website yang menarik, cepat, dan mudah digunakan — mulai dari tampilan hingga
+                        <span>fitur-fitur</span> di dalamnya.</p>
+                        <div class="anchorS"><a href="">Cek Selengkapnya</a></div>
+                    </div>
+                </div>
+                <div class="servicetype appdiv reveal">
+                    <div>
+                        <h3>App Development</h3>
+                        <p>App development adalah proses membuat <span>aplikasi mobile</span> yang fungsional dan user-friendly — mulai dari <span>desain tampilan
+                        hingga fitur-fitur</span> di dalamnya.
+                        Cocok untuk bisnis, layanan, atau ide digital yang ingin hadir langsung di <span>smartphone pengguna.</span></p>
+                        <div class="anchorS2"><a class="comingSoon2" href="">Coming Soon..</a></div>
+                    </div>
+                    <img src="img/lopUAyang.jpeg" alt="">
+                </div>
+
+            </div>
+        
+        </section>
+
+
+    <footer class="kontak" id="kontak">
+        
+        <div class="footer-container">
+
+        <div class="footer-left">
+        <div class="brand">
+            <span class="logo">▣</span>
+            <span class="name">melemew.git</span>
+            <span class="by">by <a href="#">@melemew_men.01</a></span>
         </div>
-    </section>
 
+        <p class="desc">
+            Personal projects, learning resources, and hands-on experiments
+            documenting my journey in software development
+            and continuous growth.
+        </p>
 
-    <footer class="kontak">
+        <div class="footer-links">
+            <a href="#">© melemew_men.01</a>
+            <span>·</span>
+            <a href="#">Terms</a>
+            <span>·</span>
+            <a href="#">Privacy</a>
+        </div>
+
+        <div class="socials">
+            <a href="#">in</a>
+            <a href="#">yt</a>
+            <a href="#">x</a>
+            <a href="#">gh</a>
+        </div>
+        </div>
+
+        <div class="footer-right">
+        <h3>THENEWDEV</h3>
+        <p>
+            A self-taught software engineering student focused on building
+            interactive web experiences, clean user interfaces,
+            and creative technology projects.
+        </p>
+
+        <div class="tags">
+            <span>DevOps</span>
+            <span>Kubernetes</span>
+            <span>Cloud-Native</span>
+        </div>
+        </div>
+
+    </div>
+
 
     </footer>
 
