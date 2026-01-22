@@ -340,6 +340,10 @@ section.skills {
     z-index: 10;
 }
 
+.pengalaman ul {
+  list-style: circle;
+}
+
 .exp-container {
     display: flex;
     gap: 20px;
@@ -347,6 +351,12 @@ section.skills {
     margin-top: 70px;
     color: #b5bdc4;
 }
+
+.exp-container h3 {
+  /* color: #6ea8ff; */
+  color: #ff3434;
+}
+
 #three-container {
     width: 65%;
     height: 420px;
@@ -356,13 +366,15 @@ section.skills {
     background: #131d35;
     padding: 20px;
     border-radius: 12px;
+    box-sizing: border-box;
     font-family:monospace;
     font-size: 16px;
     /* border: 0.1px solid #656769; */
 }
 
-.exp-info p {
+.exp-info li {
     margin-top: 10px;
+    margin-left: 15px;
     font-family:monospace;
 }
 

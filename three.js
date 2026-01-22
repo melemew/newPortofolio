@@ -1,5 +1,8 @@
 import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+import { OrbitControls } from 'https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js?module';
 // import { GLTFLoader } from 'https://unpkg.com/three@0.160.0/examples/jsm/loaders/GLTFLoader.js';
+
+// console.log(OrbitControls);
 
 
 const container = document.getElementById('three-container');
@@ -11,15 +14,20 @@ const cam = new THREE.PerspectiveCamera(
     0.1,
     1000
 );
-cam.position.set(0, 0, 25);
+
+
+cam.position.set(15, 10, 10);
+
 const renderer = new THREE.WebGLRenderer({ antialias:true, alpha:true });
 renderer.setSize(container.clientWidth, container.clientHeight);
 container.appendChild(renderer.domElement);
 
 
 
+
 // ! controls
-// const controls = new OrbitControls(camera, renderer.domElement);
+const orbit = new OrbitControls(cam, renderer.domElement);
+// orbit.update();
 // controls.enableZoom = false;
 // controls.enablePan = false;
 
@@ -30,7 +38,7 @@ scene.add(new THREE.AmbientLight(0xffffff, 2));
 
 // ! starfield
 const starGeo = new THREE.BufferGeometry();
-const starCount = 1000;
+const starCount = 2500;
 const positions = [];
 
 for (let i = 0; i < starCount; i++) {
@@ -62,7 +70,10 @@ scene.add(new THREE.Points(starGeo, starMat));
 
 
 
-// ! sun & planets
+// ! vector3d, sun & planets
+const vector = new THREE.Vector3(0, 0, 0);
+
+
 const objectP = [];
 const sun = new THREE.Mesh(
     new THREE.SphereGeometry(2.5, 32, 32),
@@ -75,9 +86,9 @@ objectP.push(sun);
 
 
 const experiences = [
-    { title:"HTML & CSS", desc:"Frontend layout & styling", color:0xf13557, r:8 },
-    { title:"JavaScript", desc:"Logic, DOM, async", color:0xffff00, r:11 },
-    { title:"Three.js", desc:"3D web graphics", color:0x00ff00, r:14 }
+    { title:"Software & Embedded System", desc:"Frontend layout & styling", color:0xf13557, r:8, angle:0.0045 },
+    { title:"Electric & Electronics", desc:"Logic, DOM, async", color:0xffff00, r:11, angle:0.008 },
+    { title:"Achievement", desc:"3D web graphics", color:0x00ff00, r:15, angle:0.0025 }
 ];
 
 
@@ -92,8 +103,10 @@ experiences.forEach(e => {
     planets.push(p);
     objectP.push(p);
 });
+
+
 // console.log(planets);
-console.log(scene);
+// console.log(scene);
 
 
 
@@ -104,7 +117,7 @@ console.log(scene);
 // ! interaksi
 const raycaster = new THREE.Raycaster();
 const mouse = {}
-let selected;
+
 
 window.addEventListener('mousedown', e => {
     const rect = container.getBoundingClientRect();
@@ -117,21 +130,21 @@ window.addEventListener('mousedown', e => {
     raycaster.setFromCamera(mouse, cam);
     const hits = raycaster.intersectObjects(objectP);
     
-    console.log(hits);
+    // console.log(hits);
 
     hits.forEach(i => {
 
         if (Object.keys(i.object.userData).length != 0 && i.object.name === '') {
-            console.log(i.object.userData);
-            console.log('hello');
+            // console.log(i.object.userData);
+            // console.log('hello');
             
 
             document.getElementById("exp-title").textContent =
             i.object.userData.title;
-            document.getElementById("exp-desc").textContent =
+            document.getElementById("exp-desc").innerHTML =
             i.object.userData.desc;
-        } else if (i.object.name !== ''  && Object.keys(i.object.userData).length === 0) {
-            document.getElementById("exp-title").textContent = `Clue Warna Planets :`
+        } else if (i.object.name !== ''  && Object.keys(i.object.userData).length === 0)     {
+            document.getElementById("exp-title").textContent = `Education`
             document.getElementById("exp-desc").innerHTML = 
             `<ul>
                 <li>Merah : HTML & CSS</li>
@@ -160,7 +173,7 @@ window.addEventListener('keydown', e => {
 }, { passive:false });
 
 let radius = 30;          // jarak kamera dari model
-let polar = Math.PI / 2;  // rotasi vertikal (atas–bawah)
+let polar = Math.PI / 3;  // rotasi vertikal (atas–bawah)
 let azimuth = 1.6;          // rotasi horizontal (kiri–kanan)
 
 const ROT_SPEED = 0.02;   // kecepatan rotasi
@@ -182,6 +195,12 @@ document.addEventListener('keyup', (e) => {
 
 // ! render & animation
 let angle = 0;
+let angle2 = 0;
+let angle3 = 0;
+
+let body = document.querySelector('html body').clientWidth;
+let dekstop;
+
 function animate() {
 
     // ! rotating cam to a model
@@ -216,23 +235,45 @@ function animate() {
     }
 
     // update posisi cam
-    cam.position.x = radius * Math.sin(polar) * Math.cos(azimuth);
-    cam.position.y = radius * Math.cos(polar);
-    cam.position.z = radius * Math.sin(polar) * Math.sin(azimuth);
+    if (body >= 1024 || dekstop === true) {
+        cam.position.x = radius * Math.sin(polar) * Math.cos(azimuth);
+        cam.position.y = radius * Math.cos(polar);
+        cam.position.z = radius * Math.sin(polar) * Math.sin(azimuth);
+        cam.lookAt(vector);
+    } else {
+        orbit.update();
+        orbit.target = vector;
+        cam.lookAt(vector);
+    }
 
 
-    cam.lookAt(0, 0, 0);
+    
 
 
 
     // ! rotate planets
-    angle += 0.004;
+    // angle += 0.005;
 
     planets.forEach((p,i) => {
         const r = experiences[i].r;
-        p.position.x = Math.cos(angle+i) * r;
-        p.position.z = Math.sin(angle+i) * r;
+        if (i === 0) { 
+            angle += experiences[i].angle 
+            p.position.x = Math.cos(angle+i) * r;
+            p.position.z = Math.sin(angle+i) * r;
+        } else
+        if (i === 1) { 
+            angle2 += experiences[i].angle 
+            p.position.x = Math.cos(angle2+i) * r;
+            p.position.z = Math.sin(angle2+i) * r;
+        } else
+        if (i === 2) { 
+            angle3 += experiences[i].angle 
+            p.position.x = Math.cos(angle3+i) * r;
+            p.position.z = Math.sin(angle3+i) * r;
+        }
     });
+
+
 
     renderer.render(scene, cam);
     requestAnimationFrame(animate);
@@ -244,6 +285,17 @@ animate();
 
 // ! responsive
 window.addEventListener('resize', () => {
+
+    body = document.querySelector('html body').clientWidth;
+    if (body >= 1024) {
+        dekstop = true;
+        // console.log(dekstop);
+    } else {
+        dekstop = false;
+        // console.log(dekstop);
+    }
+
+
     renderer.setSize(container.clientWidth, container.clientHeight);
     cam.aspect = container.clientWidth / container.clientHeight;
     cam.updateProjectionMatrix();
