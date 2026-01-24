@@ -1,6 +1,8 @@
-import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
-import { OrbitControls } from 'https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js?module';
-// import { GLTFLoader } from 'https://unpkg.com/three@0.160.0/examples/jsm/loaders/GLTFLoader.js';
+import * as THREE from 'https://esm.sh/three@0.160.0';
+import { OrbitControls } from 'https://esm.sh/three@0.160.0/examples/jsm/controls/OrbitControls.js';
+import { GLTFLoader } from 'https://esm.sh/three@0.160.0/examples/jsm/loaders/GLTFLoader.js';
+
+
 
 // console.log(OrbitControls);
 
@@ -29,7 +31,7 @@ container.appendChild(renderer.domElement);
 const orbit = new OrbitControls(cam, renderer.domElement);
 // orbit.update();
 // controls.enableZoom = false;
-// controls.enablePan = false;
+orbit.enablePan = false;
 
 
 // ! light
@@ -65,6 +67,16 @@ scene.add(new THREE.Points(starGeo, starMat));
 
 
 // * import model
+const loader = new GLTFLoader();
+// loader.load(
+//     './models/earth/scene.gltf',
+//     (res) => {
+//         const model = res.scene;
+//         scene.add(model);
+//     }
+// );
+
+
 
 
 
@@ -162,7 +174,7 @@ window.addEventListener('mousedown', e => {
 
 
 
-// ! controls manual by up, down, left, right
+// ! controls manual by up, down, left, right ( rotate cam ) & plus, mines ( zoom in-out )
 window.addEventListener('keydown', e => {
     if (
         (e.key === 'ArrowUp' || e.key === 'ArrowDown') &&
@@ -181,7 +193,6 @@ const keys = {};
 
 document.addEventListener('keydown', (e) => {
     keys[e.keyCode] = true;
-    
 });
 
 document.addEventListener('keyup', (e) => {
@@ -228,10 +239,10 @@ function animate() {
 
     // deketin atau mundurin cam
     if (keys[189]) {
-        radius += 0.2;  
+        radius += 0.5;
     }
     if (keys[187]) {
-        radius -= 0.2;
+        radius -= 0.5;
     }
 
     // update posisi cam
