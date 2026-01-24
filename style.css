@@ -152,7 +152,7 @@ section.hero .about1 {
 
 
 section.hero .about2 {
-    width: 500px;
+    width: 35.828125%;
     /* border: 1px solid black; */
     position: relative;
     box-sizing: border-box;
@@ -655,6 +655,7 @@ section.skills {
 
   .hero h1 {
     font-size: 2rem;
+    /* margin: auto; */
   }
 
   .hero p {
@@ -662,20 +663,20 @@ section.skills {
   }
 
   section.hero .about2 {
-    width: 100%;
-    height: auto;
+    width: 35.828125%;
+    /* height: auto; */
   }
 
   .hero img.satu_hero {
-    width: 220px;
-    height: 220px;
+    width: 78%;
+    /* height: 220px; */
   }
 
   .hero img.dua_hero {
-    width: 280px;
-    height: 280px;
-    top: 0;
-    right: 0;
+    width: 100%;
+    /* height: 280px; */
+    /* top: 0;
+    right: 0; */
   }
 
   /* SKILLS */
@@ -692,6 +693,8 @@ section.skills {
   /* EXPERIENCE */
   .exp-container {
     flex-direction: column;
+    height: fit-content;
+    padding-bottom: 40px;
   }
 
   #three-container {
@@ -769,8 +772,14 @@ section.skills {
   }
 
   /* EXPERIENCE */
+  .pengalaman {
+    height: fit-content;
+  }
+
   .exp-container {
-    flex-direction: column;
+    flex-direction: column;  
+    box-sizing: border-box;
+    padding-bottom: 40px;
   }
 
   #three-container {
