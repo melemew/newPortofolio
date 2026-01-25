@@ -632,30 +632,44 @@ section.skills {
   }
 
   header {
-    gap: 20px;
+    gap: 15px;
   }
 
   header nav ul {
-    gap: 18px;
+    gap: 10px;
   }
 
   header nav li a {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   /* HERO */
   section.hero {
     flex-direction: column;
     text-align: center;
+    height: fit-content;
   }
 
   section.hero .about1 {
     width: 100%;
   }
 
+  .hero .about1 div {
+    border-right: 8px solid #c3c7ca;
+    padding-right: 3px;
+    width: fit-content;
+    height: 33px;
+    /*border: none;*/
+    transition: .2s all ease;
+    margin-bottom: 5px;
+    margin-left: 10%;
+    text-align: center;
+  }
+
   .hero h1 {
-    font-size: 2rem;
-    /* margin: auto; */
+    font-size: 1.5rem;
+    text-align: center;
+    /* margin-left: 50; */
   }
 
   .hero p {
@@ -663,7 +677,7 @@ section.skills {
   }
 
   section.hero .about2 {
-    width: 35.828125%;
+    width: 65.828125%;
     /* height: auto; */
   }
 
