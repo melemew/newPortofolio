@@ -100,7 +100,19 @@ objectP.push(sun);
 const experiences = [
     { title:"Software & Embedded System", desc:"Frontend layout & styling", color:0xf13557, r:8, angle:0.0045 },
     { title:"Electric & Electronics", desc:"Logic, DOM, async", color:0xffff00, r:11, angle:0.008 },
-    { title:"Achievement & Certificate", desc:"3D web graphics", color:0x00ff00, r:15, angle:0.0025 }
+    { title:"Achievement & Certificate", desc:`<ul>
+            <li>Web Development | Sololearn </li>
+            <li>Belajar Dasar Pemograman Web | Dicoding</li>
+            <li>FUNDAMENTAL FRONT-END WEB
+DEVELOPMENT 2021 | Codingstudio</li>
+            <li>FUNDAMENTAL FRONT|END WEB
+DEVELOPMENT II | Codingstudio</li>
+            <li>PESERTA CODING Kategori
+DEBUGGING ARDUINO | Universitas Indonesia</li>
+            <li>RC SUMOBOT COMPETITION { winning 1st runnner up } | Daihatsu</li>
+            <li>Participant Sumobot competition | Trisakti</li>
+            <li>Participant Sumobot Competition in ASEAN ROBOTIC DAY | SMAN 28 Jakarta</li>
+        </ul>`, color:0x00ff00, r:15, angle:0.0025 }
 ];
 
 
