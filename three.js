@@ -100,7 +100,7 @@ objectP.push(sun);
 const experiences = [
     { title:"Software & Embedded System", desc:"Frontend layout & styling", color:0xf13557, r:8, angle:0.0045 },
     { title:"Electric & Electronics", desc:"Logic, DOM, async", color:0xffff00, r:11, angle:0.008 },
-    { title:"Achievement", desc:"3D web graphics", color:0x00ff00, r:15, angle:0.0025 }
+    { title:"Achievement & Certificate", desc:"3D web graphics", color:0x00ff00, r:15, angle:0.0025 }
 ];
 
 

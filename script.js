@@ -234,3 +234,27 @@ function reveal(){
         }
     }
 }
+
+
+
+
+// marking the navbar link
+const headerUl = document.querySelector('header nav ul');
+headerUl.addEventListener('click', (e) => {
+
+    if (document.querySelector('.marked')) {
+        const mark = document.querySelector('.marked');
+
+        mark.classList.remove('marked');
+    }
+
+    if (e.target.classList.contains('link')) {
+        // alert('hello');
+        // e.preventDefault();
+
+        e.target.classList.add('marked');
+    }
+    
+    // console.log(e.target);
+    
+});
