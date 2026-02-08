@@ -98,9 +98,29 @@ objectP.push(sun);
 
 
 const experiences = [
-    { title:"Software & Embedded System", desc:"Frontend layout & styling", color:0xf13557, r:8, angle:0.0045 },
-    { title:"Electric & Electronics", desc:"Logic, DOM, async", color:0xffff00, r:11, angle:0.008 },
-    { title:"Achievement & Certificate", desc:`<ul>
+    { title:"Software & Embedded System", desc:`
+            <ul>
+                <li>Web development using HTML, CSS, and JavaScript</li>
+                <li>Building responsive and interactive user interfaces</li>
+                <li>DOM manipulation, events handling, and basic animations</li>
+                <li>Basic backend concept & API integration</li>
+                <li>Embedded system projects using Arduino</li>
+                <li>Microcontroller programming, sensors, and actuators</li>
+                <li>Combining software logic with hardware control</li>
+            </ul>
+    `, color:0xf13557, r:8, angle:0.0045 },
+    { title:"Electric & Electronics", desc:`
+        <ul>
+            <li>Design and assembly of robotic and drone electronic systems</li>
+            <li>Microcontroller-based control systems (Arduino)</li>
+            <li>Motor control (DC, servo, stepper) and driver circuits</li>
+            <li>Sensor integration (IR, ultrasonic, gyroscope, accelerometer)</li>
+            <li>Power management: battery, regulator, and current distribution</li>
+            <li>Troubleshooting hardware issues during testing and competitions</li>
+        </ul>
+    `, color:0xffff00, r:11, angle:0.008 },
+    { title:"Achievement & Certificate", desc:`
+        <ul>
             <li>Web Development | Sololearn </li>
             <li>Belajar Dasar Pemograman Web | Dicoding</li>
             <li>FUNDAMENTAL FRONT-END WEB
@@ -112,7 +132,8 @@ DEBUGGING ARDUINO | Universitas Indonesia</li>
             <li>RC SUMOBOT COMPETITION { winning 1st runnner up } | Daihatsu</li>
             <li>Participant Sumobot competition | Trisakti</li>
             <li>Participant Sumobot Competition in ASEAN ROBOTIC DAY | SMAN 28 Jakarta</li>
-        </ul>`, color:0x00ff00, r:15, angle:0.0025 }
+        </ul>
+    `, color:0x00ff00, r:15, angle:0.0025 }
 ];
 
 
@@ -171,9 +192,9 @@ window.addEventListener('mousedown', e => {
             document.getElementById("exp-title").textContent = `Education`
             document.getElementById("exp-desc").innerHTML = 
             `<ul>
-                <li>Merah : HTML & CSS</li>
-                <li>Kuning : JAVASCRIPT</li>
-                <li>Hijau : THREEJS</li>
+                <li>Elementary School : Cahaya Ilmu ( 2017 - 2022 )</li>
+                <li>Junior High School : Baitul Quran Cirata ( 2022 - 2024 )</li>
+                <li>Senior High School : Perguruan Rakyat 2 ( 2024 - 2026 )</li>
             </ul>`
         }
 
