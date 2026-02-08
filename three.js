@@ -120,18 +120,15 @@ const experiences = [
         </ul>
     `, color:0xffff00, r:11, angle:0.008 },
     { title:"Achievement & Certificate", desc:`
-        <ul>
-            <li>Web Development | Sololearn </li>
-            <li>Belajar Dasar Pemograman Web | Dicoding</li>
-            <li>FUNDAMENTAL FRONT-END WEB
-DEVELOPMENT 2021 | Codingstudio</li>
-            <li>FUNDAMENTAL FRONT|END WEB
-DEVELOPMENT II | Codingstudio</li>
-            <li>PESERTA CODING Kategori
-DEBUGGING ARDUINO | Universitas Indonesia</li>
-            <li>RC SUMOBOT COMPETITION { winning 1st runnner up } | Daihatsu</li>
-            <li>Participant Sumobot competition | Trisakti</li>
-            <li>Participant Sumobot Competition in ASEAN ROBOTIC DAY | SMAN 28 Jakarta</li>
+        <ul class="achievement-list">
+            <li>🏆 <strong>RC SumoBot Competition</strong> — 1st Runner Up | Daihatsu</li>
+            <li>🤖 Participant SumoBot Competition | Trisakti</li>
+            <li>🤖 Participant SumoBot Competition — ASEAN Robotic Day | SMAN 28 Jakarta</li>
+            <li>⚙️ Arduino Debugging Coding Participant | Universitas Indonesia</li>
+            <li>📜 Web Development | Sololearn</li>
+            <li>📜 Fundamental Front-End Web Development | Codingstudio</li>
+            <li>📜 Fundamental Front-End Web Development II | Codingstudio</li>
+            <li>📜 Belajar Dasar Pemrograman Web | Dicoding</li>
         </ul>
     `, color:0x00ff00, r:15, angle:0.0025 }
 ];
