@@ -391,6 +391,7 @@ section.skills {
 .exp-info li {
     margin-top: 10px;
     margin-left: 15px;
+    line-height: 24px;
     font-family:monospace;
 }
 
