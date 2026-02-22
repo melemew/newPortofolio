@@ -88,7 +88,7 @@ function splice(data, a, b) {
 }
 
 
-// fungsi h1 : Software Enggineer
+// fungsi h1 : Software Engineer
 function h1_se() {
 
     newH1_2 = '';
@@ -208,13 +208,7 @@ p.forEach(e => e.classList.add('no-select'));
 
 
 
-// clear form before unload
-window.onbeforeunload = () => {
-    for (const form of document.getElementsByTagName("form")) {
-        form.reset();
-    }
-}
-    
+// clear form before unload   
 window.addEventListener('scroll', reveal);
     
 function reveal(){  
