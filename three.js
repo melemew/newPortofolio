@@ -192,6 +192,7 @@ window.addEventListener('mousedown', e => {
                 <li>Elementary School : Cahaya Ilmu ( 2017 - 2022 )</li>
                 <li>Junior High School : Baitul Quran Cirata ( 2022 - 2024 )</li>
                 <li>Senior High School : Perguruan Rakyat 2 ( 2024 - 2026 )</li>
+                <li>College : -</li>
             </ul>`
         }
 
