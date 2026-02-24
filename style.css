@@ -77,7 +77,7 @@ header {
     position: fixed;
     width: 100%;
     top: 0;
-    height: 65px;
+    height: 75px;
     display: flex;
     flex-direction: row;
     justify-content: center;
