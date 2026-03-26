@@ -913,6 +913,13 @@ section.skills {
     font-size: 12px;
   }
 
+  .form-left label, .form-right label {
+    font-size: 12px;
+  }
+
+  .form-left div input {
+    font-size: 10px;
+  }
 
 }
 
