@@ -171,10 +171,36 @@
 
         </div>
 
+        <form action="https://formspree.io/f/xreyjlzv" method="POST" target="_blank" autocomplete="off">
+
+            <div class="form-left">
+                <div>
+                    <label for="fullname">Full name:</label>
+                    <input type="text" name="full name" id="fullname" placeholder="write your full name" required minlength="10">
+                </div>
+            
+                <div>
+                    <label for="email">Your email:</label>
+                    <input type="email" name="email" id="email" placeholder="write your email" required>
+                </div>
+            </div>
+            
+            <div class="form-right">
+                <label for="message">Your message:</label>
+                <textarea name="message" id="message" placeholder="write your message" required minlength="10" maxlength="500"></textarea>
+
+                <button type="submit">Contact me</button>
+            </div>
+
+
+        </form>
+
     </footer>
 
 
 </body>
+<!-- <script src="https://accounts.google.com" async defer></script> -->
+<script type="module" src="email.js"></script>
 <script type="module" src="three.js"></script>
 <script src="script.js"></script>
 <script src="script2.js"></script>

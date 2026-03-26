@@ -1,7 +1,10 @@
+// ! khusus script document event
+
 // untuk marking Navbar sesuai scrolling pada setiap section yang dimarked
 const headerLink = document.querySelectorAll('.link');
 const reveals = document.querySelectorAll('.changes');
 
+// window.addEventListener('onload', analyzing);
 window.addEventListener('load', reveal);
 window.addEventListener('scroll', reveal);
 
@@ -24,3 +27,12 @@ function reveal() {
         }
     }
 }
+
+
+// function analyzing() {
+//     google.accounts.id.initialize({
+//         client_id: '567669876366-3q9d0uk82mtrvmdjmqs8uef3fic6gccn.apps.googleusercontent.com',
+//         callback: handleCredentialResponse
+//     });
+//     google.accounts.id.prompt();
+// }
