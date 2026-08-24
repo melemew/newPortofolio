@@ -178,13 +178,13 @@ section.hero .about2 {
 }
 
 .hero img.satu_hero {
-    width: 78%;
+    width: 74%;
     /* height: 77.5%; */
     border-radius: 50%;
 }
 
 .hero img.dua_hero {
-    width: 100%;
+    width: 95%;
     /* height: 100%; */
     position: absolute;
     /* border: 1px blue solid; */
@@ -811,12 +811,12 @@ section.skills {
   }
 
   .hero img.satu_hero {
-    width: 78%;
+    width: 74%;
     /* height: 220px; */
   }
 
   .hero img.dua_hero {
-    width: 100%;
+    width: 95%;
     /* height: 280px; */
     /* top: 0;
     right: 0; */

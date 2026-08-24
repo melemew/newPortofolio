@@ -1,0 +1,11 @@
+Model Information:
+* title:	Satelit Buatan
+* source:	https://sketchfab.com/3d-models/satelit-buatan-67b76de14aff422192d7cd28f1d8c44a
+* author:	apsarinareswari (https://sketchfab.com/apsarinareswari)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Satelit Buatan" (https://sketchfab.com/3d-models/satelit-buatan-67b76de14aff422192d7cd28f1d8c44a) by apsarinareswari (https://sketchfab.com/apsarinareswari) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

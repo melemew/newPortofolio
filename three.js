@@ -18,7 +18,7 @@ const cam = new THREE.PerspectiveCamera(
 );
 
 
-cam.position.set(15, 10, 20);
+// cam.position.set(15, 10, 20);
 
 const renderer = new THREE.WebGLRenderer({ antialias:true, alpha:true });
 renderer.setSize(container.clientWidth, container.clientHeight);
@@ -40,14 +40,14 @@ scene.add(new THREE.AmbientLight(0xffffff, 2));
 
 // ! starfield
 const starGeo = new THREE.BufferGeometry();
-const starCount = 2500;
+const starCount = 7000;
 const positions = [];
 
 for (let i = 0; i < starCount; i++) {
     positions.push(
-        (Math.random() - 0.5) * 400,
-        (Math.random() - 0.5) * 400,
-        (Math.random() - 0.5) * 400
+        (Math.random() - 0.5) * 500,
+        (Math.random() - 0.5) * 500,
+        (Math.random() - 0.5) * 500
     );        
 }
 
@@ -66,18 +66,69 @@ scene.add(new THREE.Points(starGeo, starMat));
 
 
 
-// * import model
+
+
+
+
+// * import planets
+const objectP = [];
+const models = {};
+
 const loader = new GLTFLoader();
-// loader.load(
-//     './models/earth/scene.gltf',
-//     (res) => {
-//         const model = res.scene;
-//         scene.add(model);
-//     }
-// );
+function loadModel(url) {
+    return new Promise((resolve, reject) => {
+        loader.load(url, resolve, undefined, reject);
+    });
+}
+
+async function init(url, scale, key, name, data) {
+
+    if (name !== 'matahari' && key !== 'sun') {
+
+        const res = await loadModel(url);
+
+        res.scene.scale.setScalar(scale);
+        scene.add(res.scene);
+
+        res.scene.traverse(child => {
+            if (child.isMesh) {
+                child.name = name; 
+                child.userData = data;
+            }
+        });
+        
+        objectP.push(res.scene);
+        models[key] = res.scene;
+
+        return res.scene
+
+    } else {
+
+        const res = await loadModel(url);
+
+        res.scene.scale.setScalar(scale);
+        scene.add(res.scene);
+
+        res.scene.traverse(child => {
+            if (child.isMesh) {
+                child.name = name; 
+            }
+        });
+
+        objectP.push(res.scene);
+        models[key] = res.scene;
+
+    }  
+    
+}
+init('./models/sun/scene.gltf', 0.5, 'sun', 'matahari'); // sun
 
 
-
+// animate : planets imports
+function rotateModel(model, direction = 'kanan', speed = 0.005) {
+    if (!model) return;
+    model.rotation.y += direction === 'kiri' ? speed : -speed;
+}
 
 
 
@@ -86,14 +137,13 @@ const loader = new GLTFLoader();
 const vector = new THREE.Vector3(0, 0, 0);
 
 
-const objectP = [];
-const sun = new THREE.Mesh(
-    new THREE.SphereGeometry(2.5, 32, 32),
-    new THREE.MeshStandardMaterial({ emissive: 0xffaa00 })
-);
-sun.name = 'matahari'
-scene.add(sun);
-objectP.push(sun);
+// const sun = new THREE.Mesh(
+//     new THREE.SphereGeometry(2.5, 32, 32),
+//     new THREE.MeshStandardMaterial({ emissive: 0xffaa00 })
+// );
+// sun.name = 'matahari'
+// scene.add(sun);
+// objectP.push(sun);
 
 
 
@@ -108,7 +158,7 @@ const experiences = [
                 <li>Microcontroller programming, sensors, and actuators</li>
                 <li>Combining software logic with hardware control</li>
             </ul>
-    `, color:0xf13557, r:8, angle:0.0045 },
+    `, color:0xf13557, r:25, angle:0.0024, name:'jupiter', key:'jupiter', path:'./models/jupiter/scene.gltf', scale:0.02 },
     { title:"Electric & Electronics", desc:`
         <ul>
             <li>Design and assembly of robotic and drone electronic systems</li>
@@ -118,7 +168,7 @@ const experiences = [
             <li>Power management: battery, regulator, and current distribution</li>
             <li>Troubleshooting hardware issues during testing and competitions</li>
         </ul>
-    `, color:0xffff00, r:11, angle:0.008 },
+    `, color:0xffff00, r:18, angle:0.0018, name:'mars', key:'mars', path:'./models/mars/scene.gltf', scale:0.9 },
     { title:"Achievement & Certificate", desc:`
         <ul class="achievement-list">
             <li>🏆 <strong>RC SumoBot Competition</strong> — 1st Runner Up | Daihatsu</li>
@@ -130,29 +180,30 @@ const experiences = [
             <li>📜 Fundamental Front-End Web Development II | Codingstudio</li>
             <li>📜 Belajar Dasar Pemrograman Web | Dicoding</li>
         </ul>
-    `, color:0x00ff00, r:15, angle:0.0025 }
+    `, color:0x00ff00, r:14, angle:0.0025, name:'bumi', key:'earth', path:'./models/earth/scene.gltf', scale:0.3 }
 ];
 
 
 const planets = [];
-experiences.forEach(e => {
-    const p = new THREE.Mesh(
-        new THREE.SphereGeometry(1,32,32),
-        new THREE.MeshStandardMaterial({ color: e.color })
-    );
+// experiences.forEach(e => {
+//     const p = new THREE.Mesh(
+//         new THREE.SphereGeometry(1,32,32),
+//         new THREE.MeshStandardMaterial({ color: e.color })
+//     );
+//     p.userData = e;
+//     scene.add(p);
+//     planets.push(p);
+//     objectP.push(p);
+// });
+
+
+experiences.forEach(async e => {
+    const p = await init(e.path, e.scale, e.key, e.name, e)
     p.userData = e;
     scene.add(p);
     planets.push(p);
     objectP.push(p);
 });
-
-
-// console.log(planets);
-// console.log(scene);
-
-
-
-
 
 
 
@@ -163,7 +214,6 @@ const mouse = {}
 
 window.addEventListener('mousedown', e => {
     const rect = container.getBoundingClientRect();
-    // console.log(rect);
     
 
     mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
@@ -176,7 +226,7 @@ window.addEventListener('mousedown', e => {
 
     hits.forEach(i => {
 
-        if (Object.keys(i.object.userData).length != 0 && i.object.name === '') {
+        if (Object.keys(i.object.userData).length !== 0 && i.object.name !== 'matahari') {
             // console.log(i.object.userData);
             // console.log('hello');
             
@@ -185,14 +235,14 @@ window.addEventListener('mousedown', e => {
             i.object.userData.title;
             document.getElementById("exp-desc").innerHTML =
             i.object.userData.desc;
-        } else if (i.object.name !== ''  && Object.keys(i.object.userData).length === 0)     {
+        } else if (i.object.name === 'matahari'  && Object.keys(i.object.userData).length !== 0)     {
             document.getElementById("exp-title").textContent = `Education`
             document.getElementById("exp-desc").innerHTML = 
             `<ul>
                 <li>Elementary School : Cahaya Ilmu ( 2017 - 2022 )</li>
                 <li>Junior High School : Baitul Quran Cirata ( 2022 - 2024 )</li>
                 <li>Senior High School : Perguruan Rakyat 2 ( 2024 - 2026 )</li>
-                <li>College : -</li>
+                <li>College : Politeknik Negeri Lampung ( 2026 - now )</li>
             </ul>`
         }
 
@@ -215,7 +265,7 @@ window.addEventListener('keydown', e => {
     }
 }, { passive:false });
 
-let radius = 30;          // jarak kamera dari model
+let radius = 42;          // jarak kamera dari model
 let polar = Math.PI / 3;  // rotasi vertikal (atas–bawah)
 let azimuth = 1.6;          // rotasi horizontal (kiri–kanan)
 
@@ -314,6 +364,15 @@ function animate() {
             p.position.z = Math.sin(angle3+i) * r;
         }
     });
+
+
+
+
+    // rotate Imports
+    rotateModel(models.sun, 'kiri', 0.0015);
+    rotateModel(models.earth, 'kanan', 0.0035);
+    rotateModel(models.jupiter, 'kanan', 0.0035);
+    rotateModel(models.mars, 'kiri', 0.0035);
 
 
 
