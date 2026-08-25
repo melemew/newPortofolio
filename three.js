@@ -32,6 +32,9 @@ const orbit = new OrbitControls(cam, renderer.domElement);
 // orbit.update();
 // controls.enableZoom = false;
 orbit.enablePan = false;
+orbit.maxDistance = 360;
+orbit.minDistance = 20;
+// orbit.maxZoom = -10;
 
 
 // ! light
@@ -49,9 +52,9 @@ const positions = [];
 
 for (let i = 0; i < starCount; i++) {
     positions.push(
-        (Math.random() - 0.5) * 500,
-        (Math.random() - 0.5) * 500,
-        (Math.random() - 0.5) * 500
+        (Math.random() - 0.5) * 600,
+        (Math.random() - 0.5) * 600,
+        (Math.random() - 0.5) * 600
     );        
 }
 
