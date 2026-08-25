@@ -35,7 +35,11 @@ orbit.enablePan = false;
 
 
 // ! light
-scene.add(new THREE.AmbientLight(0xffffff, 2));
+scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+
+const pointlight = new THREE.PointLight( 0xffffff, 1100, 1000000 );
+pointlight.position.set(0, 0, 0);
+scene.add(pointlight);
 
 
 // ! starfield
@@ -121,7 +125,7 @@ async function init(url, scale, key, name, data) {
     }  
     
 }
-init('./models/sun/scene.gltf', 0.5, 'sun', 'matahari'); // sun
+init('./models/sun/sun/scene.gltf', 0.5, 'sun', 'matahari'); // sun
 
 
 // animate : planets imports
@@ -158,7 +162,7 @@ const experiences = [
                 <li>Microcontroller programming, sensors, and actuators</li>
                 <li>Combining software logic with hardware control</li>
             </ul>
-    `, color:0xf13557, r:25, angle:0.0024, name:'jupiter', key:'jupiter', path:'./models/jupiter/scene.gltf', scale:0.02 },
+    `, color:0xf13557, r:18, angle:0.0024, name:'jupiter', key:'jupiter', path:'./models/jupiter/scene.gltf', scale:0.02 },
     { title:"Electric & Electronics", desc:`
         <ul>
             <li>Design and assembly of robotic and drone electronic systems</li>
@@ -168,7 +172,7 @@ const experiences = [
             <li>Power management: battery, regulator, and current distribution</li>
             <li>Troubleshooting hardware issues during testing and competitions</li>
         </ul>
-    `, color:0xffff00, r:18, angle:0.0018, name:'mars', key:'mars', path:'./models/mars/scene.gltf', scale:0.9 },
+    `, color:0xffff00, r:14, angle:0.0018, name:'mars', key:'mars', path:'./models/mars/mars/scene.gltf', scale:0.9 },
     { title:"Achievement & Certificate", desc:`
         <ul class="achievement-list">
             <li>🏆 <strong>RC SumoBot Competition</strong> — 1st Runner Up | Daihatsu</li>
@@ -180,7 +184,7 @@ const experiences = [
             <li>📜 Fundamental Front-End Web Development II | Codingstudio</li>
             <li>📜 Belajar Dasar Pemrograman Web | Dicoding</li>
         </ul>
-    `, color:0x00ff00, r:14, angle:0.0025, name:'bumi', key:'earth', path:'./models/earth/scene.gltf', scale:0.3 }
+    `, color:0x00ff00, r:24, angle:0.0025, name:'bumi', key:'earth', path:'./models/earth/earth/scene.gltf', scale:0.3 }
 ];
 
 

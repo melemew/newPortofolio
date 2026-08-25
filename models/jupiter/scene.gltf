@@ -56,12 +56,12 @@
   ],
   "asset": {
     "extras": {
-      "author": "i686 (https://sketchfab.com/i686)",
+      "author": "Shady Tex (https://sketchfab.com/ShadyTex4u)",
       "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
-      "source": "https://sketchfab.com/3d-models/jupiter-f2691840b51c41e6b6d1a70bdac0b2ff",
-      "title": "Jupiter"
+      "source": "https://sketchfab.com/3d-models/realistic-jupiter-993ba62a539e4c308e9e3137df454ed6",
+      "title": "Realistic Jupiter"
     },
-    "generator": "Sketchfab-16.8.0",
+    "generator": "Sketchfab-15.36.0",
     "version": "2.0"
   },
   "bufferViews": [
@@ -107,8 +107,7 @@
         "baseColorTexture": {
           "index": 0
         },
-        "metallicFactor": 0.0,
-        "roughnessFactor": 0.9011337201129707
+        "metallicFactor": 0.0
       }
     }
   ],
@@ -136,16 +135,16 @@
       ],
       "matrix": [
         1.0,
+        6.842791131287157e-32,
+        -2.832769343193999e-16,
         0.0,
-        0.0,
-        0.0,
-        0.0,
-        2.220446049250313e-16,
+        -2.832769343193999e-16,
+        3.828568672208042e-16,
         -1.0,
         0.0,
-        0.0,
+        4.002661120305586e-32,
         1.0,
-        2.220446049250313e-16,
+        3.828568672208042e-16,
         0.0,
         0.0,
         0.0,
@@ -176,7 +175,7 @@
         0.0,
         1.0
       ],
-      "name": "96dc25eb7287486f81b9eb17710dd305.fbx"
+      "name": "164f3ef3a5354d2d99363d985d381246.fbx"
     },
     {
       "children": [
